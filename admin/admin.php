@@ -78,7 +78,7 @@ class Sidetrack_Protected_Admin {
 
 		$current_screen->add_help_tab(
 			array(
-				'id'      => 'PASSWORD_PROTECTED_SETTINGS',
+				'id'      => 'SIDETRACK_PROTECTED_SETTINGS',
 				'title'   => __( 'Password Protected', 'password-protected' ),
 				'content' => __( '<p><strong>Password Protected Status</strong><br />Turn on/off password protection.</p>', 'password-protected' )
 					. __( '<p><strong>Protected Permissions</strong><br />Allow access for logged in users and administrators without needing to enter a password. You will need to enable this option if you want administrators to be able to preview the site in the Theme Customizer. Also allow RSS Feeds to be accessed when the site is password protected.</p>', 'password-protected' )

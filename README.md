@@ -1,4 +1,4 @@
-Password Protected
+Sidetrack Protected
 ==================
 
 A very simple way to quickly password protect your WordPress site with a single password.
@@ -13,7 +13,7 @@ Features include:
 - Works with Mark Jaquith's [Login Logo](http://wordpress.org/extend/plugins/login-logo/) plugin.
 - Works with the [Uber Login Logo](http://wordpress.org/plugins/uber-login-logo/) plugin.
 
-> Please note, this plugin works by setting a cookie to allow access to the site. If you are using a caching plugin or web hosting such as WP Engine that has in-built caching, you will need to configure the caching service to be disabled if the Password Protected cookie is set.
+> Please note, this plugin works by setting a cookie to allow access to the site. If you are using a caching plugin or web hosting such as WP Engine that has in-built caching, you will need to configure the caching service to be disabled if the Sidetrack Protected cookie is set.
 
 Translations
 ------------
@@ -28,7 +28,7 @@ To install and configure this plugin...
 
 1. Upload or install the plugin through your WordPress admin.
 1. Activate the plugin via the 'Plugins' admin menu.
-1. Configure the password options in the Password Protected settings.
+1. Configure the password options in the Sidetrack Protected settings.
 
 Upgrading
 ---------
@@ -48,7 +48,7 @@ __Can I prevent administrators having to enter password?__
 In the settings, check the 'Allow Administrators' checkbox.
 
 __I cannot preview my changes in the Theme Customizer__  
-You must be an administrator (have the manage_options capability) and in the Password Protected settings, check the 'Allow Administrators' checkbox.
+You must be an administrator (have the manage_options capability) and in the Sidetrack Protected settings, check the 'Allow Administrators' checkbox.
 
 __How can I log out?__  
 Just add a "password-protected=logout" query to your URL.

@@ -51,9 +51,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  * @todo Remember me
  */
 
-define( 'PASSWORD_PROTECTED_SUBDIR', '/' . str_replace( basename( __FILE__ ), '', plugin_basename( __FILE__ ) ) );
-define( 'PASSWORD_PROTECTED_URL', plugins_url( PASSWORD_PROTECTED_SUBDIR ) );
-define( 'PASSWORD_PROTECTED_DIR', plugin_dir_path( __FILE__ ) );
+define( 'SIDETRACK_PROTECTED_SUBDIR', '/' . str_replace( basename( __FILE__ ), '', plugin_basename( __FILE__ ) ) );
+define( 'SIDETRACK_PROTECTED_URL', plugins_url( SIDETRACK_PROTECTED_SUBDIR ) );
+define( 'SIDETRACK_PROTECTED_DIR', plugin_dir_path( __FILE__ ) );
 
 define( 'SIDETRACK_PROTECTED_BASENAME', plugin_basename( __FILE__ ) );
 
