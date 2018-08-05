@@ -10,33 +10,7 @@
  * License: GPLv2
  */
 
-// add_action( 'login_enqueue_scripts', 'enqueue_login_scripts_styles' );
-function enqueue_login_scripts_styles() {
-	wp_register_style( 'login-page', plugins_url( '/css/sidetrack-login.css', __FILE__ ) );
-	wp_enqueue_style( 'login-page' );
-}
 
-
-function asmgi_login_logo() {
-	?>
-	<style type="text/css">
-		#login {
-			margin-top: 3rem;
-		}
-		#login h1 a, .login h1 a {
-			background-image: url(<?php echo plugins_url( 'assets/sidetrack-logo.png', __FILE__ ); ?>);
-			height: auto;
-			width: 320px;
-			background-size: 320px auto;
-			background-repeat: no-repeat;
-			padding: 2rem 0;
-			/*border: 1px solid purple;*/
-			background-position-y: 1rem;
-		}
-	</style>
-<?php
-}
-add_action( 'login_enqueue_scripts', 'asmgi_login_logo' );
 /*
 Copyright 2012 Ben Huson (email : ben@thewhiteroom.net)
 
