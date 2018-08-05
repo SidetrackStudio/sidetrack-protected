@@ -134,7 +134,7 @@ class Admin_Bar {
 	 */
 	private static function is_enabled() {
 
-		return (bool) get_option( 'password_protected_status' );
+		return (bool) get_option( 'sidetrack_protected_status' );
 
 	}
 

@@ -45,7 +45,7 @@ class Sidetrack_Protected_Admin_Caching {
 
 		// Caching Section
 		add_settings_section(
-			'password_protected_compat_caching',
+			'sidetrack_protected_compat_caching',
 			__( 'Caching', 'password-protected' ),
 			array( $this, 'section_caching' ),
 			'password-protected-compat'
@@ -53,22 +53,22 @@ class Sidetrack_Protected_Admin_Caching {
 
 		// Cookies
 		add_settings_field(
-			'password_protected_compat_caching_cookie',
+			'sidetrack_protected_compat_caching_cookie',
 			__( 'Cookies', 'password-protected' ),
 			array( $this, 'field_cookies' ),
 			'password-protected-compat',
-			'password_protected_compat_caching'
+			'sidetrack_protected_compat_caching'
 		);
 
 		// WP Engine Hosting
 		if ( $this->test_wp_engine() ) {
 
 			add_settings_field(
-				'password_protected_compat_caching_wp_engine',
+				'sidetrack_protected_compat_caching_wp_engine',
 				__( 'WP Engine Hosting', 'password-protected' ),
 				array( $this, 'field_wp_engine' ),
 				'password-protected-compat',
-				'password_protected_compat_caching'
+				'sidetrack_protected_compat_caching'
 			);
 
 		}
@@ -77,11 +77,11 @@ class Sidetrack_Protected_Admin_Caching {
 		if ( $this->test_w3_total_cache() ) {
 
 			add_settings_field(
-				'password_protected_compat_caching_w3_total_cache',
+				'sidetrack_protected_compat_caching_w3_total_cache',
 				__( 'W3 Total Cache', 'password-protected' ),
 				array( $this, 'field_w3_total_cache' ),
 				'password-protected-compat',
-				'password_protected_compat_caching'
+				'sidetrack_protected_compat_caching'
 			);
 
 		}

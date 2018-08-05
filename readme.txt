@@ -114,9 +114,9 @@ More instructions can be found at [wp-translations.org](http://wp-translations.o
 * Security fix: Use a more complex password hash for cookie key. Props Marcin Bury, [Securitum](http://securitum.pl).
 
 = 2.0 =
-* Added [password_protected_logout_link](https://github.com/benhuson/password-protected/wiki/password_protected_logout_link-Shortcode) shortcode.
+* Added [sidetrack_protected_logout_link](https://github.com/benhuson/password-protected/wiki/sidetrack_protected_logout_link-Shortcode) shortcode.
 * Load 'password-protected-login.css' in theme folder if it exists.
-* Added [password_protected_stylesheet_file](https://github.com/benhuson/password-protected/wiki/password_protected_stylesheet_file) filter to specify alternate stylesheet location.
+* Added [sidetrack_protected_stylesheet_file](https://github.com/benhuson/password-protected/wiki/sidetrack_protected_stylesheet_file) filter to specify alternate stylesheet location.
 * Added is_user_logged_in(), login_url(), logout_url() and logout_link() methods.
 * Added Basque, Czech, Greek, Lithuanian and Norwegian translations.
 * Better handling of login/out redirects when protection is not active on home page.
@@ -124,19 +124,19 @@ More instructions can be found at [wp-translations.org](http://wp-translations.o
 = 1.9 =
 * Fixed "Allow Users" functionality with is_user_logged_in(). Props PatRaven.
 * Added option for allowed IP addresses which can bypass the password protection.
-* Added 'password_protected_is_active' filter.
+* Added 'sidetrack_protected_is_active' filter.
 
 = 1.8 =
 * Support for adding "password-protected-login.php" in theme directory.
-* Allow filtering of the 'redirect to' URL via the 'password_protected_login_redirect_url' filter.
-* Added 'password_protected_login_messages' action to output errors and messages in template.
+* Allow filtering of the 'redirect to' URL via the 'sidetrack_protected_login_redirect_url' filter.
+* Added 'sidetrack_protected_login_messages' action to output errors and messages in template.
 * Updated translations.
 * Use current_time( 'timestamp' ) instead of time() to take into account site timezone.
 * Check login earlier in the template_redirect action.
 
 = 1.7.2 =
 * Fix always allow access to robots.txt.
-* Added 'password_protected_login_redirect' filter.
+* Added 'sidetrack_protected_login_redirect' filter.
 * Updated translations.
 
 = 1.7.1 =
@@ -144,7 +144,7 @@ More instructions can be found at [wp-translations.org](http://wp-translations.o
 
 = 1.7 =
 * Remove JavaScript that disables admin RSS checkbox.
-* Added 'password_protected_theme_file' filter to allow custom login templates.
+* Added 'sidetrack_protected_theme_file' filter to allow custom login templates.
 * It's now really easy to contribute to the translation of this plugin via our [Transifex page](https://www.transifex.com/projects/p/password-protected/resource/password-protected/).
 * Add option to allow logged in users.
 
@@ -175,9 +175,9 @@ More instructions can be found at [wp-translations.org](http://wp-translations.o
 = 1.3 =
 * Added checkbox to allow access to feeds when protection is enabled.
 * Prepare for WordPress 3.5 Settings API changes.
-* Added 'password_protected_before_login_form' and 'password_protected_after_login_form' actions.
-* Added 'password_protected_process_login' filter to make it possible to extend login functionality.
-* Now possible to use 'pre_update_option_password_protected_password' filter to use password before it is encrypted and saved.
+* Added 'sidetrack_protected_before_login_form' and 'sidetrack_protected_after_login_form' actions.
+* Added 'sidetrack_protected_process_login' filter to make it possible to extend login functionality.
+* Now possible to use 'pre_update_option_sidetrack_protected_password' filter to use password before it is encrypted and saved.
 * Ready for [translations](http://codex.wordpress.org/I18n_for_WordPress_Developers).
 
 = 1.2.2 =
@@ -221,22 +221,22 @@ Only redirect to [allowed domain names](https://codex.wordpress.org/Plugin_API/F
 Security fix: Use a more complex password hash for cookie key.
 
 = 2.0 =
-Added 'password_protected_logout_link' shortcode and use 'password-protected-login.css' in theme folder if it exists.
+Added 'sidetrack_protected_logout_link' shortcode and use 'password-protected-login.css' in theme folder if it exists.
 
 = 1.9 =
 Fixed "Allow Users" functionality and added option to allowed IP addresses which can bypass the password protection.
 
 = 1.8 =
-Support for adding "password-protected-login.php" in theme directory and allow filtering of the 'redirect to' URL via the 'password_protected_login_redirect_url' filter.
+Support for adding "password-protected-login.php" in theme directory and allow filtering of the 'redirect to' URL via the 'sidetrack_protected_login_redirect_url' filter.
 
 = 1.7.2 =
-Added 'password_protected_login_redirect' filter.
+Added 'sidetrack_protected_login_redirect' filter.
 
 = 1.7.1 =
 Fix login template compatibility for WordPress 3.9
 
 = 1.7 =
-Added 'password_protected_theme_file' filter and option to allow logged in users. Contribute to the translation of this plugin via our [Transifex page](https://www.transifex.com/projects/p/password-protected/resource/password-protected/).
+Added 'sidetrack_protected_theme_file' filter and option to allow logged in users. Contribute to the translation of this plugin via our [Transifex page](https://www.transifex.com/projects/p/password-protected/resource/password-protected/).
 
 = 1.6.2 =
 Allow redirection to a different URL when logging out.

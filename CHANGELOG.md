@@ -62,9 +62,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [2.0] - 2015-03-26
 
 ### Added
-- Added [password_protected_logout_link](https://github.com/benhuson/password-protected/wiki/password_protected_logout_link-Shortcode) shortcode.
+- Added [sidetrack_protected_logout_link](https://github.com/benhuson/password-protected/wiki/sidetrack_protected_logout_link-Shortcode) shortcode.
 - Load 'password-protected-login.css' in theme folder if it exists.
-- Added [password_protected_stylesheet_file](https://github.com/benhuson/password-protected/wiki/password_protected_stylesheet_file) filter to specify alternate stylesheet location.
+- Added [sidetrack_protected_stylesheet_file](https://github.com/benhuson/password-protected/wiki/sidetrack_protected_stylesheet_file) filter to specify alternate stylesheet location.
 - Added is_user_logged_in(), login_url(), logout_url() and logout_link() methods.
 - Added Basque, Czech, Greek, Lithuanian and Norwegian translations.
 
@@ -78,14 +78,14 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 - Added option for allowed IP addresses which can bypass the password protection.
-- Added 'password_protected_is_active' filter.
+- Added 'sidetrack_protected_is_active' filter.
 
 ## [1.8] - 2014-10-07
 
 ### Added
 - Support for adding "password-protected-login.php" in theme directory.
-- Allow filtering of the 'redirect to' URL via the 'password_protected_login_redirect_url' filter.
-- Added 'password_protected_login_messages' action to output errors and messages in template.
+- Allow filtering of the 'redirect to' URL via the 'sidetrack_protected_login_redirect_url' filter.
+- Added 'sidetrack_protected_login_messages' action to output errors and messages in template.
 - Updated translations.
 
 ### Changed
@@ -98,7 +98,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Fix always allow access to robots.txt.
 
 ### Added
-- Added 'password_protected_login_redirect' filter.
+- Added 'sidetrack_protected_login_redirect' filter.
 - Updated translations.
 
 ## [1.7.1] - 2014-03-17
@@ -112,7 +112,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Remove JavaScript that disables admin RSS checkbox.
 
 ### Added
-- Added 'password_protected_theme_file' filter to allow custom login templates.
+- Added 'sidetrack_protected_theme_file' filter to allow custom login templates.
 - It's now really easy to contribute to the translation of this plugin via our [Transifex page](https://www.transifex.com/projects/p/password-protected/resource/password-protected/).
 - Add option to allow logged in users.
 
@@ -163,9 +163,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Added checkbox to allow access to feeds when protection is enabled.
 - Prepare for WordPress 3.5 Settings API changes.
-- Added 'password_protected_before_login_form' and 'password_protected_after_login_form' actions.
-- Added 'password_protected_process_login' filter to make it possible to extend login functionality.
-- Now possible to use 'pre_update_option_password_protected_password' filter to use password before it is encrypted and saved.
+- Added 'sidetrack_protected_before_login_form' and 'sidetrack_protected_after_login_form' actions.
+- Added 'sidetrack_protected_process_login' filter to make it possible to extend login functionality.
+- Now possible to use 'pre_update_option_sidetrack_protected_password' filter to use password before it is encrypted and saved.
 - Ready for [translations](http://codex.wordpress.org/I18n_for_WordPress_Developers).
 
 ## [1.2.2] - 2012-07-30

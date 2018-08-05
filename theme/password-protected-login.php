@@ -1,11 +1,10 @@
 <?php
-
 /**
  * Based roughly on wp-login.php @revision 19414
  * http://core.trac.wordpress.org/browser/trunk/wp-login.php?rev=19414
  */
 
-global $wp_version, $Sidetrack_Protected, $error, $is_iphone;
+global $wp_version, $sidetrack_protected, $error, $is_iphone;
 
 /**
  * WP Shake JS
@@ -39,17 +38,17 @@ if ( SITECOOKIEPATH != COOKIEPATH ) {
 
 // If cookies are disabled we can't log in even with a valid password.
 if ( isset( $_POST['testcookie'] ) && empty( $_COOKIE[ TEST_COOKIE ] ) ) {
-	$Sidetrack_Protected->errors->add( 'test_cookie', __( "<strong>ERROR</strong>: Cookies are blocked or not supported by your browser. You must <a href='http://www.google.com/cookies.html'>enable cookies</a> to use WordPress.", 'password-protected' ) );
+	$sidetrack_protected->errors->add( 'test_cookie', __( "<strong>ERROR</strong>: Cookies are blocked or not supported by your browser. You must <a href='http://www.google.com/cookies.html'>enable cookies</a> to use WordPress.", 'password-protected' ) );
 }
 
 // Shake it!
 $shake_error_codes = array( 'empty_password', 'incorrect_password' );
-if ( $Sidetrack_Protected->errors->get_error_code() && in_array( $Sidetrack_Protected->errors->get_error_code(), $shake_error_codes ) ) {
-	add_action( 'password_protected_login_head', 'wp_shake_js', 12 );
+if ( $sidetrack_protected->errors->get_error_code() && in_array( $sidetrack_protected->errors->get_error_code(), $shake_error_codes ) ) {
+	add_action( 'sidetrack_protected_login_head', 'wp_shake_js', 12 );
 }
 
 // Obey privacy setting
-add_action( 'password_protected_login_head', 'noindex' );
+add_action( 'sidetrack_protected_login_head', 'noindex' );
 
 ?>
 <!DOCTYPE html>
@@ -57,7 +56,7 @@ add_action( 'password_protected_login_head', 'noindex' );
 <head>
 
 <meta http-equiv="Content-Type" content="<?php bloginfo( 'html_type' ); ?>; charset=<?php bloginfo( 'charset' ); ?>" />
-<title><?php echo apply_filters( 'password_protected_wp_title', get_bloginfo( 'name' ) ); ?></title>
+<title><?php echo apply_filters( 'sidetrack_protected_wp_title', get_bloginfo( 'name' ) ); ?></title>
 
 <?php
 
@@ -89,7 +88,7 @@ if ( $is_iphone ) {
 }
 
 do_action( 'login_enqueue_scripts' );
-do_action( 'password_protected_login_head' );
+do_action( 'sidetrack_protected_login_head' );
 
 ?>
 
@@ -97,20 +96,20 @@ do_action( 'password_protected_login_head' );
 <body class="login login-password-protected login-action-password-protected-login wp-core-ui">
 
 <div id="login">
-	<h1><a href="<?php echo esc_url( apply_filters( 'password_protected_login_headerurl', home_url( '/' ) ) ); ?>" title="<?php echo esc_attr( apply_filters( 'password_protected_login_headertitle', get_bloginfo( 'name' ) ) ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
+	<h1><a href="<?php echo esc_url( apply_filters( 'sidetrack_protected_login_headerurl', home_url( '/' ) ) ); ?>" title="<?php echo esc_attr( apply_filters( 'sidetrack_protected_login_headertitle', get_bloginfo( 'name' ) ) ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
 
-	<?php do_action( 'password_protected_login_messages' ); ?>
-	<?php do_action( 'password_protected_before_login_form' ); ?>
+	<?php do_action( 'sidetrack_protected_login_messages' ); ?>
+	<?php do_action( 'sidetrack_protected_before_login_form' ); ?>
 
-	<form name="loginform" id="loginform" action="<?php echo esc_url( $Sidetrack_Protected->login_url() ); ?>" method="post">
+	<form name="loginform" id="loginform" action="<?php echo esc_url( $sidetrack_protected->login_url() ); ?>" method="post">
 		<p>
-			<label for="password_protected_pass"><?php _e( 'Password', 'password-protected' ); ?><br />
-			<input type="password" name="password_protected_pwd" id="password_protected_pass" class="input" value="" size="20" tabindex="20" /></label>
+			<label for="sidetrack_protected_pass"><?php _e( 'Password', 'password-protected' ); ?><br />
+			<input type="password" name="sidetrack_protected_pwd" id="sidetrack_protected_pass" class="input" value="" size="20" tabindex="20" /></label>
 		</p>
 
-		<?php if ( $Sidetrack_Protected->allow_remember_me() ) : ?>
+		<?php if ( $sidetrack_protected->allow_remember_me() ) : ?>
 			<p class="forgetmenot">
-				<label for="password_protected_rememberme"><input name="password_protected_rememberme" type="checkbox" id="password_protected_rememberme" value="1" tabindex="90" /> <?php esc_attr_e( 'Remember Me', 'password-protected' ); ?></label>
+				<label for="sidetrack_protected_rememberme"><input name="sidetrack_protected_rememberme" type="checkbox" id="sidetrack_protected_rememberme" value="1" tabindex="90" /> <?php esc_attr_e( 'Remember Me', 'password-protected' ); ?></label>
 			</p>
 		<?php endif; ?>
 
@@ -122,12 +121,12 @@ do_action( 'password_protected_login_head' );
 		</p>
 	</form>
 
-	<?php do_action( 'password_protected_after_login_form' ); ?>
+	<?php do_action( 'sidetrack_protected_after_login_form' ); ?>
 
 </div>
 
 <script type="text/javascript">
-try{document.getElementById('password_protected_pass').focus();}catch(e){}
+try{document.getElementById('sidetrack_protected_pass').focus();}catch(e){}
 if(typeof wpOnload=='function')wpOnload();
 </script>
 

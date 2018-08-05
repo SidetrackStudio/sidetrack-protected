@@ -93,22 +93,22 @@ Only redirect to [allowed domain names](https://codex.wordpress.org/Plugin_API/F
 Security fix: Use a more complex password hash for cookie key.
 
 ### 2.0
-Added 'password_protected_logout_link' shortcode and use 'password-protected-login.css' in theme folder if it exists.
+Added 'sidetrack_protected_logout_link' shortcode and use 'password-protected-login.css' in theme folder if it exists.
 
 ### 1.9
 Fixed "Allow Users" functionality and added option to allowed IP addresses which can bypass the password protection.
 
 ### 1.8
-Support for adding "password-protected-login.php" in theme directory and allow filtering of the 'redirect to' URL via the 'password_protected_login_redirect_url' filter.
+Support for adding "password-protected-login.php" in theme directory and allow filtering of the 'redirect to' URL via the 'sidetrack_protected_login_redirect_url' filter.
 
 ### 1.7.2
-Added 'password_protected_login_redirect' filter.
+Added 'sidetrack_protected_login_redirect' filter.
 
 ### 1.7.1
 Fix login template compatibility for WordPress 3.9
 
 ### 1.7
-Added 'password_protected_theme_file' filter and option to allow logged in users. Contribute to the translation of this plugin via our [Transifex page](https://www.transifex.com/projects/p/password-protected/resource/password-protected/).
+Added 'sidetrack_protected_theme_file' filter and option to allow logged in users. Contribute to the translation of this plugin via our [Transifex page](https://www.transifex.com/projects/p/password-protected/resource/password-protected/).
 
 ### 1.6.2
 Allow redirection to a different URL when logging out.

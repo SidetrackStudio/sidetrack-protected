@@ -39,13 +39,14 @@ define( 'SIDETRACK_PROTECTED_DIR', plugin_dir_path( __FILE__ ) );
 
 define( 'SIDETRACK_PROTECTED_BASENAME', plugin_basename( __FILE__ ) );
 
-global $Sidetrack_Protected;
+global $sidetrack_protected;
 
 if ( is_admin() ) {
 	include_once( 'classes/class-sidetrack-protected-admin.php' );
+	include_once( 'classes/class-sidetrack-ip-ajax.php' );
 }
 
 require 'classes/class-sidetrack-customizer.php';
 require 'classes/class-sidetrack-protected.php';
-$Sidetrack_Protected = new Sidetrack_Protected();
+$sidetrack_protected = new Sidetrack_Protected();
 
