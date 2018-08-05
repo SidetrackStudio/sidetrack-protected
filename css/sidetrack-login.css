@@ -1,0 +1,9 @@
+.login-password-protected .login .button-primary {
+		background: #8a1296;
+}
+.wp-core-ui .button-primary  {
+		background: #8a1296;
+}
+body.login-password-protected {
+    background: #f2d1f5;
+}

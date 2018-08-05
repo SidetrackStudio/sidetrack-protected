@@ -9,6 +9,14 @@
  * Author URI: http://github.com/benhuson/password-protected/
  * License: GPLv2
  */
+
+// add_action( 'login_enqueue_scripts', 'enqueue_login_scripts_styles' );
+function enqueue_login_scripts_styles() {
+	wp_register_style( 'login-page', plugins_url( '/css/sidetrack-login.css', __FILE__ ) );
+	wp_enqueue_style( 'login-page' );
+}
+
+
 function asmgi_login_logo() {
 	?>
 	<style type="text/css">
@@ -59,5 +67,7 @@ define( 'SIDETRACK_PROTECTED_BASENAME', plugin_basename( __FILE__ ) );
 
 global $Sidetrack_Protected;
 
+require 'classes/class-sidetrack-customizer.php';
 require 'classes/class-sidetrack-protected.php';
 $Sidetrack_Protected = new Sidetrack_Protected();
+

@@ -31,7 +31,6 @@ class Sidetrack_Protected {
 		add_action( 'init', array( $this, 'compat' ) );
 		add_action( 'password_protected_login_messages', array( $this, 'login_messages' ) );
 		add_action( 'login_enqueue_scripts', array( $this, 'load_theme_stylesheet' ), 5 );
-
 		add_shortcode( 'password_protected_logout_link', array( $this, 'logout_link_shortcode' ) );
 
 		include_once( dirname( dirname( __FILE__ ) ) . '/admin/admin-bar.php' );
@@ -700,7 +699,6 @@ class Sidetrack_Protected {
 				wp_enqueue_style( 'password-protected-login', get_template_directory_uri() . '/' . $filename );
 			}
 		}
-
 	}
 
 	/**

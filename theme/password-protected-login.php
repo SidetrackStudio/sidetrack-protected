@@ -83,7 +83,7 @@ if ( $is_iphone ) {
 	.login form, .login .message, #login_error { margin-left: 0px; }
 	.login #nav, .login #backtoblog { margin-left: 8px; }
 	.login h1 a { width: auto; }
-	#login { padding: 20px 0; }
+	#login { padding: 20px 0; }	
 	</style>
 	<?php
 }
