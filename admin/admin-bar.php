@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @package     Password Protected
+ * @package     Sidetrack Protected
  * @subpackage  Admin Bar
  *
  * Adds an indicator in the admin if Password Protection is enabled.

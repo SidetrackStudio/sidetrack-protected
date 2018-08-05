@@ -3,7 +3,7 @@
 class Sidetrack_Protected_Admin {
 
 	var $settings_page_id;
-	var $options_group = 'password-protected';
+	var $options_group = 'sidetrack-protected';
 
 	/**
 	 * Constructor
@@ -17,7 +17,7 @@ class Sidetrack_Protected_Admin {
 		add_action( 'password_protected_help_tabs', array( $this, 'help_tabs' ), 5 );
 		add_action( 'admin_notices', array( $this, 'password_protected_admin_notices' ) );
 		add_filter( 'plugin_row_meta', array( $this, 'plugin_row_meta' ), 10, 4 );
-		add_filter( 'plugin_action_links_password-protected/password-protected.php', array( $this, 'plugin_action_links' ) );
+		add_filter( 'plugin_action_links_sidetrack-protected/sidetrack-protected.php', array( $this, 'plugin_action_links' ) );
 		add_filter( 'pre_update_option_password_protected_password', array( $this, 'pre_update_option_password_protected_password' ), 10, 2 );
 
 	}
@@ -27,7 +27,7 @@ class Sidetrack_Protected_Admin {
 	 */
 	public function admin_menu() {
 
-		$this->settings_page_id = add_options_page( __( 'Password Protected', 'password-protected' ), __( 'Password Protected', 'password-protected' ), 'manage_options', 'password-protected', array( $this, 'settings_page' ) );
+		$this->settings_page_id = add_options_page( __( 'Sidetrack Protected', 'sidetrack-protected' ), __( 'Sidetrack Protected', 'sidetrack-protected' ), 'manage_options', 'sidetrack-protected', array( $this, 'settings_page' ) );
 		add_action( 'load-' . $this->settings_page_id, array( $this, 'add_help_tabs' ), 20 );
 
 	}
@@ -40,15 +40,15 @@ class Sidetrack_Protected_Admin {
 
 		<div class="wrap">
 			<div id="icon-options-general" class="icon32"><br /></div>
-			<h2><?php _e( 'Password Protected Settings', 'password-protected' ); ?></h2>
+			<h2><?php _e( 'Sidetrack Protected Settings', 'sidetrack-protected' ); ?></h2>
 			<form method="post" action="options.php">
 				<?php
-				settings_fields( 'password-protected' );
-				do_settings_sections( 'password-protected' );
+				settings_fields( 'sidetrack-protected' );
+				do_settings_sections( 'sidetrack-protected' );
 				?>
 				<p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="<?php _e( 'Save Changes' ); ?>"></p>
 			</form>
-			<?php do_settings_sections( 'password-protected-compat' ); ?>
+			<?php do_settings_sections( 'sidetrack-protected-compat' ); ?>
 		</div>
 
 		<?php
@@ -79,10 +79,10 @@ class Sidetrack_Protected_Admin {
 		$current_screen->add_help_tab(
 			array(
 				'id'      => 'SIDETRACK_PROTECTED_SETTINGS',
-				'title'   => __( 'Password Protected', 'password-protected' ),
-				'content' => __( '<p><strong>Password Protected Status</strong><br />Turn on/off password protection.</p>', 'password-protected' )
-					. __( '<p><strong>Protected Permissions</strong><br />Allow access for logged in users and administrators without needing to enter a password. You will need to enable this option if you want administrators to be able to preview the site in the Theme Customizer. Also allow RSS Feeds to be accessed when the site is password protected.</p>', 'password-protected' )
-					. __( '<p><strong>Password Fields</strong><br />To set a new password, enter it into both fields. You cannot set an `empty` password. To disable password protection uncheck the Enabled checkbox.</p>', 'password-protected' ),
+				'title'   => __( 'Sidetrack Protected', 'sidetrack-protected' ),
+				'content' => __( '<p><strong>Sidetrack Protected Status</strong><br />Turn on/off password protection.</p>', 'sidetrack-protected' )
+					. __( '<p><strong>Protected Permissions</strong><br />Allow access for logged in users and administrators without needing to enter a password. You will need to enable this option if you want administrators to be able to preview the site in the Theme Customizer. Also allow RSS Feeds to be accessed when the site is password protected.</p>', 'sidetrack-protected' )
+					. __( '<p><strong>Password Fields</strong><br />To set a new password, enter it into both fields. You cannot set an `empty` password. To disable password protection uncheck the Enabled checkbox.</p>', 'sidetrack-protected' ),
 			)
 		);
 
@@ -102,7 +102,7 @@ class Sidetrack_Protected_Admin {
 
 		add_settings_field(
 			'password_protected_status',
-			__( 'Password Protected Status', 'password-protected' ),
+			__( 'Sidetrack Protected Status', 'sidetrack-protected' ),
 			array( $this, 'password_protected_status_field' ),
 			$this->options_group,
 			'password_protected'
@@ -110,7 +110,7 @@ class Sidetrack_Protected_Admin {
 
 		add_settings_field(
 			'password_protected_permissions',
-			__( 'Protected Permissions', 'password-protected' ),
+			__( 'Protected Permissions', 'sidetrack-protected' ),
 			array( $this, 'password_protected_permissions_field' ),
 			$this->options_group,
 			'password_protected'
@@ -118,7 +118,7 @@ class Sidetrack_Protected_Admin {
 
 		add_settings_field(
 			'password_protected_password',
-			__( 'New Password', 'password-protected' ),
+			__( 'New Password', 'sidetrack-protected' ),
 			array( $this, 'password_protected_password_field' ),
 			$this->options_group,
 			'password_protected'
@@ -126,7 +126,7 @@ class Sidetrack_Protected_Admin {
 
 		add_settings_field(
 			'password_protected_allowed_ip_addresses',
-			__( 'Allow IP Addresses', 'password-protected' ),
+			__( 'Allow IP Addresses', 'sidetrack-protected' ),
 			array( $this, 'password_protected_allowed_ip_addresses_field' ),
 			$this->options_group,
 			'password_protected'
@@ -134,7 +134,7 @@ class Sidetrack_Protected_Admin {
 
 		add_settings_field(
 			'password_protected_remember_me',
-			__( 'Allow Remember me', 'password-protected' ),
+			__( 'Allow Remember me', 'sidetrack-protected' ),
 			array( $this, 'password_protected_remember_me_field' ),
 			$this->options_group,
 			'password_protected'
@@ -142,7 +142,7 @@ class Sidetrack_Protected_Admin {
 
 		add_settings_field(
 			'password_protected_remember_me_lifetime',
-			__( 'Remember for this many days', 'password-protected' ),
+			__( 'Remember for this many days', 'sidetrack-protected' ),
 			array( $this, 'password_protected_remember_me_lifetime_field' ),
 			$this->options_group,
 			'password_protected'
@@ -174,13 +174,13 @@ class Sidetrack_Protected_Admin {
 			if ( empty( $val['new'] ) ) {
 				return $old_val;
 			} elseif ( empty( $val['confirm'] ) ) {
-				add_settings_error( 'password_protected_password', 'password_protected_password', __( 'New password not saved. When setting a new password please enter it in both fields.', 'password-protected' ) );
+				add_settings_error( 'password_protected_password', 'password_protected_password', __( 'New password not saved. When setting a new password please enter it in both fields.', 'sidetrack-protected' ) );
 				return $old_val;
 			} elseif ( $val['new'] != $val['confirm'] ) {
-				add_settings_error( 'password_protected_password', 'password_protected_password', __( 'New password not saved. Password fields did not match.', 'password-protected' ) );
+				add_settings_error( 'password_protected_password', 'password_protected_password', __( 'New password not saved. Password fields did not match.', 'sidetrack-protected' ) );
 				return $old_val;
 			} elseif ( $val['new'] == $val['confirm'] ) {
-				add_settings_error( 'password_protected_password', 'password_protected_password', __( 'New password saved.', 'password-protected' ), 'updated' );
+				add_settings_error( 'password_protected_password', 'password_protected_password', __( 'New password saved.', 'sidetrack-protected' ), 'updated' );
 				return $val['new'];
 			}
 			return get_option( 'password_protected_password' );
@@ -223,12 +223,12 @@ class Sidetrack_Protected_Admin {
 	}
 
 	/**
-	 * Password Protected Section
+	 * Sidetrack Protected Section
 	 */
 	public function password_protected_settings_section() {
 
-		echo '<p>' . __( 'Password protect your web site. Users will be asked to enter a password to view the site.', 'password-protected' ) . '<br />
-			' . __( 'For more information about Password Protected settings, view the "Help" tab at the top of this page.', 'password-protected' ) . '</p>';
+		echo '<p>' . __( 'Password protect your web site. Users will be asked to enter a password to view the site.', 'sidetrack-protected' ) . '<br />
+			' . __( 'For more information about Sidetrack Protected settings, view the "Help" tab at the top of this page.', 'sidetrack-protected' ) . '</p>';
 
 	}
 
@@ -237,7 +237,7 @@ class Sidetrack_Protected_Admin {
 	 */
 	public function password_protected_status_field() {
 
-		echo '<label><input name="password_protected_status" id="password_protected_status" type="checkbox" value="1" ' . checked( 1, get_option( 'password_protected_status' ), false ) . ' /> ' . __( 'Enabled', 'password-protected' ) . '</label>';
+		echo '<label><input name="password_protected_status" id="password_protected_status" type="checkbox" value="1" ' . checked( 1, get_option( 'password_protected_status' ), false ) . ' /> ' . __( 'Enabled', 'sidetrack-protected' ) . '</label>';
 
 	}
 
@@ -246,10 +246,10 @@ class Sidetrack_Protected_Admin {
 	 */
 	public function password_protected_permissions_field() {
 
-		echo '<label><input name="password_protected_administrators" id="password_protected_administrators" type="checkbox" value="1" ' . checked( 1, get_option( 'password_protected_administrators' ), false ) . ' /> ' . __( 'Allow Administrators', 'password-protected' ) . '</label>';
-		echo '<label><input name="password_protected_users" id="password_protected_users" type="checkbox" value="1" ' . checked( 1, get_option( 'password_protected_users' ), false ) . ' style="margin-left: 20px;" /> ' . __( 'Allow Logged In Users', 'password-protected' ) . '</label>';
-		echo '<label><input name="password_protected_feeds" id="password_protected_feeds" type="checkbox" value="1" ' . checked( 1, get_option( 'password_protected_feeds' ), false ) . ' style="margin-left: 20px;" /> ' . __( 'Allow RSS Feeds', 'password-protected' ) . '</label>';
-		echo '<label><input name="password_protected_rest" id="password_protected_rest" type="checkbox" value="1" ' . checked( 1, get_option( 'password_protected_rest' ), false ) . ' style="margin-left: 20px;" /> ' . __( 'Allow REST API Access', 'password-protected' ) . '</label>';
+		echo '<label><input name="password_protected_administrators" id="password_protected_administrators" type="checkbox" value="1" ' . checked( 1, get_option( 'password_protected_administrators' ), false ) . ' /> ' . __( 'Allow Administrators', 'sidetrack-protected' ) . '</label>';
+		echo '<label><input name="password_protected_users" id="password_protected_users" type="checkbox" value="1" ' . checked( 1, get_option( 'password_protected_users' ), false ) . ' style="margin-left: 20px;" /> ' . __( 'Allow Logged In Users', 'sidetrack-protected' ) . '</label>';
+		echo '<label><input name="password_protected_feeds" id="password_protected_feeds" type="checkbox" value="1" ' . checked( 1, get_option( 'password_protected_feeds' ), false ) . ' style="margin-left: 20px;" /> ' . __( 'Allow RSS Feeds', 'sidetrack-protected' ) . '</label>';
+		echo '<label><input name="password_protected_rest" id="password_protected_rest" type="checkbox" value="1" ' . checked( 1, get_option( 'password_protected_rest' ), false ) . ' style="margin-left: 20px;" /> ' . __( 'Allow REST API Access', 'sidetrack-protected' ) . '</label>';
 
 	}
 
@@ -258,8 +258,8 @@ class Sidetrack_Protected_Admin {
 	 */
 	public function password_protected_password_field() {
 
-		echo '<input type="password" name="password_protected_password[new]" id="password_protected_password_new" size="16" value="" autocomplete="off"> <span class="description">' . __( 'If you would like to change the password type a new one. Otherwise leave this blank.', 'password-protected' ) . '</span><br>
-			<input type="password" name="password_protected_password[confirm]" id="password_protected_password_confirm" size="16" value="" autocomplete="off"> <span class="description">' . __( 'Type your new password again.', 'password-protected' ) . '</span>';
+		echo '<input type="password" name="password_protected_password[new]" id="password_protected_password_new" size="16" value="" autocomplete="off"> <span class="description">' . __( 'If you would like to change the password type a new one. Otherwise leave this blank.', 'sidetrack-protected' ) . '</span><br>
+			<input type="password" name="password_protected_password[confirm]" id="password_protected_password_confirm" size="16" value="" autocomplete="off"> <span class="description">' . __( 'Type your new password again.', 'sidetrack-protected' ) . '</span>';
 
 	}
 
@@ -269,7 +269,7 @@ class Sidetrack_Protected_Admin {
 	public function password_protected_allowed_ip_addresses_field() {
 
 		echo '<textarea name="password_protected_allowed_ip_addresses" id="password_protected_allowed_ip_addresses" rows="3" class="large-text" />' . get_option( 'password_protected_allowed_ip_addresses' ) . '</textarea>';
-		echo '<p class="description">' . esc_html__( 'Enter one IP address per line.', 'password-protected' ) . ' ' . esc_html( sprintf( __( 'Your IP is address %s.', 'password-protected' ), $_SERVER['REMOTE_ADDR'] ) ) . '</p>';
+		echo '<p class="description">' . esc_html__( 'Enter one IP address per line.', 'sidetrack-protected' ) . ' ' . esc_html( sprintf( __( 'Your IP is address %s.', 'sidetrack-protected' ), $_SERVER['REMOTE_ADDR'] ) ) . '</p>';
 
 	}
 
@@ -327,9 +327,9 @@ class Sidetrack_Protected_Admin {
 	 */
 	public function plugin_row_meta( $plugin_meta, $plugin_file, $plugin_data, $status ) {
 
-		if ( 'password-protected/password-protected.php' == $plugin_file ) {
-			$plugin_meta[] = sprintf( '<a href="%s">%s</a>', __( 'http://github.com/benhuson/password-protected', 'password-protected' ), __( 'GitHub', 'password-protected' ) );
-			$plugin_meta[] = sprintf( '<a href="%s">%s</a>', __( 'https://translate.wordpress.org/projects/wp-plugins/password-protected', 'password-protected' ), __( 'Translate', 'password-protected' ) );
+		if ( 'sidetrack-protected/sidetrack-protected.php' == $plugin_file ) {
+			$plugin_meta[] = sprintf( '<a href="%s">%s</a>', __( 'http://github.com/benhuson/sidetrack-protected', 'sidetrack-protected' ), __( 'GitHub', 'sidetrack-protected' ) );
+			$plugin_meta[] = sprintf( '<a href="%s">%s</a>', __( 'https://translate.wordpress.org/projects/wp-plugins/sidetrack-protected', 'sidetrack-protected' ), __( 'Translate', 'sidetrack-protected' ) );
 		}
 
 		return $plugin_meta;
@@ -346,7 +346,7 @@ class Sidetrack_Protected_Admin {
 	 */
 	public function plugin_action_links( $actions ) {
 
-		$actions[] = sprintf( '<a href="%s">%s</a>', admin_url( 'options-general.php?page=password-protected' ), __( 'Settings', 'password-protected' ) );
+		$actions[] = sprintf( '<a href="%s">%s</a>', admin_url( 'options-general.php?page=sidetrack-protected' ), __( 'Settings', 'sidetrack-protected' ) );
 		return $actions;
 
 	}
@@ -374,16 +374,16 @@ class Sidetrack_Protected_Admin {
 			$pwd = get_option( 'password_protected_password' );
 
 			if ( (bool) $status && empty( $pwd ) ) {
-				echo $this->admin_error_display( __( 'You have enabled password protection but not yet set a password. Please set one below.', 'password-protected' ) );
+				echo $this->admin_error_display( __( 'You have enabled password protection but not yet set a password. Please set one below.', 'sidetrack-protected' ) );
 			}
 
 			if ( current_user_can( 'manage_options' ) && ( (bool) get_option( 'password_protected_administrators' ) || (bool) get_option( 'password_protected_users' ) ) ) {
 				if ( (bool) get_option( 'password_protected_administrators' ) && (bool) get_option( 'password_protected_users' ) ) {
-					echo $this->admin_error_display( __( 'You have enabled password protection and allowed administrators and logged in users - other users will still need to enter a password to view the site.', 'password-protected' ) );
+					echo $this->admin_error_display( __( 'You have enabled password protection and allowed administrators and logged in users - other users will still need to enter a password to view the site.', 'sidetrack-protected' ) );
 				} elseif ( (bool) get_option( 'password_protected_administrators' ) ) {
-					echo $this->admin_error_display( __( 'You have enabled password protection and allowed administrators - other users will still need to enter a password to view the site.', 'password-protected' ) );
+					echo $this->admin_error_display( __( 'You have enabled password protection and allowed administrators - other users will still need to enter a password to view the site.', 'sidetrack-protected' ) );
 				} elseif ( (bool) get_option( 'password_protected_users' ) ) {
-					echo $this->admin_error_display( __( 'You have enabled password protection and allowed logged in users - other users will still need to enter a password to view the site.', 'password-protected' ) );
+					echo $this->admin_error_display( __( 'You have enabled password protection and allowed logged in users - other users will still need to enter a password to view the site.', 'sidetrack-protected' ) );
 				}
 			}
 		}

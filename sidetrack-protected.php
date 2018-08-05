@@ -1,12 +1,12 @@
 <?php
 /**
  * Plugin Name: Sidetrack Protected
- * Plugin URI: https://github.com/SidetrackStudio/password-protected
- * Description: A very simple way to quickly password protect your WordPress site with a single password. Please note: This plugin does not restrict access to uploaded files and images and does not work with some caching setups.
- * Version: 2.2.2
+ * Plugin URI: https://github.com/SidetrackStudio/sidetrack-protected
+ * Description: A forked copy of Password Protected, which hides your WordPress site behind a login screen with a single password. Please note: This plugin does not restrict access to uploaded files and images and does not work with some caching setups.
+ * Version: 2.2.3
  * Author: Ben Huson & pbrocks
  * Text Domain: sidetrack-protected
- * Author URI: http://github.com/benhuson/password-protected/
+ * Author URI: http://github.com/pbrocks/
  * License: GPLv2
  */
 
@@ -66,6 +66,10 @@ define( 'SIDETRACK_PROTECTED_DIR', plugin_dir_path( __FILE__ ) );
 define( 'SIDETRACK_PROTECTED_BASENAME', plugin_basename( __FILE__ ) );
 
 global $Sidetrack_Protected;
+
+if ( is_admin() ) {
+	include_once( 'classes/class-sidetrack-protected-admin.php' );
+}
 
 require 'classes/class-sidetrack-customizer.php';
 require 'classes/class-sidetrack-protected.php';

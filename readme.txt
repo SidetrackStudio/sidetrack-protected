@@ -1,4 +1,4 @@
-=== Password Protected ===
+=== Sidetrack Protected ===
 Contributors: husobj
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DXRJDNCMK9U3N
 Tags: password, protect, password protect, login
@@ -24,7 +24,7 @@ Features include:
 * Works with Mark Jaquith's [Login Logo](http://wordpress.org/extend/plugins/login-logo/) plugin.
 * Works with the [Uber Login Logo](http://wordpress.org/plugins/uber-login-logo/) plugin.
 
-> Please note, this plugin works by setting a cookie to allow access to the site. If you are using a caching plugin or web hosting such as WP Engine that has in-built caching, you will need to configure the caching service to be disabled if the Password Protected cookie is set.
+> Please note, this plugin works by setting a cookie to allow access to the site. If you are using a caching plugin or web hosting such as WP Engine that has in-built caching, you will need to configure the caching service to be disabled if the Sidetrack Protected cookie is set.
 
 = Translations =
 
@@ -37,7 +37,7 @@ To install and configure this plugin...
 
 1. Upload or install the plugin through your WordPress admin.
 2. Activate the plugin via the 'Plugins' admin menu.
-3. Configure the password options in the Password Protected settings.
+3. Configure the password options in the Sidetrack Protected settings.
 
 = Upgrading =
 
@@ -55,7 +55,7 @@ In the settings, check the 'Allow Feeds' checkbox.
 In the settings, check the 'Allow Administrators' checkbox.
 
 = I cannot preview my changes in the Theme Customizer =
-You must be an administrator (have the manage_options capability) and in the Password Protected settings, check the 'Allow Administrators' checkbox.
+You must be an administrator (have the manage_options capability) and in the Sidetrack Protected settings, check the 'Allow Administrators' checkbox.
 
 = How can I log out? =
 Just add a "password-protected=logout" query to your URL.
@@ -78,7 +78,7 @@ More instructions can be found at [wp-translations.org](http://wp-translations.o
 == Screenshots ==
 
 1. Login page perfectly mimicks the WordPress login.
-2. Password Protected settings page.
+2. Sidetrack Protected settings page.
 
 == Changelog ==
 

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @package     Password Protected
+ * @package     Sidetrack Protected
  * @subpackage  Admin Caching
  *
  * @since  2.1
@@ -37,7 +37,7 @@ class Sidetrack_Protected_Admin_Caching {
 	 * Cache Settings Info
 	 *
 	 * Displays information on the settings page for helping
-	 * to configure Password Protected to work with caching setups.
+	 * to configure Sidetrack Protected to work with caching setups.
 	 *
 	 * @since  2.1
 	 */
@@ -95,8 +95,8 @@ class Sidetrack_Protected_Admin_Caching {
 	 */
 	public function section_caching() {
 
-		echo '<p>' . __( 'Password Protected does not always work well with sites that use caching.', 'password-protected' ) . '<br />
-			' . __( 'If your site uses a caching plugin or your web hosting uses server-side caching, you may need to configure your setup to disable caching for the Password Protected cookie:', 'password-protected' ) . '</p>';
+		echo '<p>' . __( 'Sidetrack Protected does not always work well with sites that use caching.', 'password-protected' ) . '<br />
+			' . __( 'If your site uses a caching plugin or your web hosting uses server-side caching, you may need to configure your setup to disable caching for the Sidetrack Protected cookie:', 'password-protected' ) . '</p>';
 
 	}
 
@@ -119,7 +119,7 @@ class Sidetrack_Protected_Admin_Caching {
 	public function field_wp_engine() {
 
 		echo '<p>' . __( 'We have detected your site may be running on WP Engine hosting.', 'password-protected' ) . '<br />
-			' . __( 'In order for Password Protected to work with WP Engine\'s caching configuration you must ask them to disable caching for the Password Protected cookie.', 'password-protected' ) . '</p>';
+			' . __( 'In order for Sidetrack Protected to work with WP Engine\'s caching configuration you must ask them to disable caching for the Sidetrack Protected cookie.', 'password-protected' ) . '</p>';
 
 	}
 
@@ -131,7 +131,7 @@ class Sidetrack_Protected_Admin_Caching {
 	public function field_w3_total_cache() {
 
 		echo '<p>' . __( 'It looks like you may be using the W3 Total Cache plugin?', 'password-protected' ) . '<br />
-			' . __( 'In order for Password Protected to work with W3 Total Cache you must disable caching when the Password Protected cookie is set.', 'password-protected' ) . ' 
+			' . __( 'In order for Sidetrack Protected to work with W3 Total Cache you must disable caching when the Sidetrack Protected cookie is set.', 'password-protected' ) . ' 
 			' . sprintf( __( 'You can adjust the cookie settings for W3 Total Cache under <a href="%s">Performance > Page Cache > Advanced > Rejected Cookies</a>.', 'password-protected' ), admin_url( '/admin.php?page=w3tc_pgcache#advanced' ) ) . '</p>';
 
 	}

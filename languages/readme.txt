@@ -1,6 +1,6 @@
 ********************************************************
 
-  Password Protected I18n
+  Sidetrack Protected I18n
   ==============
   You want to translate, help, or improve a translation!
   

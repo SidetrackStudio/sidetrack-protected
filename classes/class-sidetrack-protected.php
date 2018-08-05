@@ -38,7 +38,6 @@ class Sidetrack_Protected {
 		if ( is_admin() ) {
 
 			include_once( dirname( dirname( __FILE__ ) ) . '/admin/admin-caching.php' );
-			include_once( dirname( dirname( __FILE__ ) ) . '/admin/admin.php' );
 
 			$this->admin_caching = new Sidetrack_Protected_Admin_Caching( $this );
 			$this->admin = new Sidetrack_Protected_Admin();
