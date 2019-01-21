@@ -43,10 +43,10 @@ class Admin_Bar {
 
 			$wp_admin_bar->add_menu(
 				array(
-					'id'     => 'password_protected',
-					'title'  => __( '', 'password-protected' ),
-					'href'   => self::get_toolbar_item_url(),
-					'meta'   => array(
+					'id'    => 'sidetrack_protected',
+					'title' => __( '', 'sidetrack-protected' ),
+					'href'  => self::get_toolbar_item_url(),
+					'meta'  => array(
 						'title' => self::get_toolbar_item_title(),
 					),
 				)
@@ -64,7 +64,7 @@ class Admin_Bar {
 	private static function get_toolbar_item_url() {
 
 		if ( current_user_can( 'manage_options' ) ) {
-			return admin_url( 'options-general.php?page=password-protected' );
+			return admin_url( 'options-general.php?page=sidetrack-protected' );
 		}
 
 		return '';
@@ -79,10 +79,10 @@ class Admin_Bar {
 	private static function get_toolbar_item_title() {
 
 		if ( self::is_enabled() ) {
-			return __( 'Password Protection is enabled.', 'password-protected' );
+			return __( 'Password Protection is enabled.', 'sidetrack-protected' );
 		}
 
-		return __( 'Password Protection is disabled.', 'password-protected' );
+		return __( 'Password Protection is disabled.', 'sidetrack-protected' );
 
 	}
 
@@ -96,19 +96,19 @@ class Admin_Bar {
 		if ( self::allow_current_user() ) {
 
 			if ( self::is_enabled() ) {
-				$icon = '\f160';  // Locked
+				$icon       = '\f160';  // Locked
 				$background = '#46b450';
 			} else {
-				$icon = '\f528';  // Unlocked
+				$icon       = '\f528';  // Unlocked
 				$background = 'transparent';
 			}
 
 			?>
 			<style type="text/css">
-			#wp-admin-bar-password_protected { background-color: <?php echo $background; ?> !important; }
-			#wp-admin-bar-password_protected > .ab-item { color: #fff !important;  }
-			#wp-admin-bar-password_protected > .ab-item:before { content: "<?php echo $icon; ?>"; top: 2px; color: #fff !important; margin-right: 0px; }
-			#wp-admin-bar-password_protected:hover > .ab-item { background-color: <?php echo $background; ?> !important; color: #fff; }
+			#wp-admin-bar-sidetrack_protected { background-color: <?php echo $background; ?> !important; }
+			#wp-admin-bar-sidetrack_protected > .ab-item { color: #fff !important;  }
+			#wp-admin-bar-sidetrack_protected > .ab-item:before { content: "<?php echo $icon; ?>"; top: 2px; color: #fff !important; margin-right: 0px; }
+			#wp-admin-bar-sidetrack_protected:hover > .ab-item { background-color: <?php echo $background; ?> !important; color: #fff; }
 			</style>
 			<?php
 

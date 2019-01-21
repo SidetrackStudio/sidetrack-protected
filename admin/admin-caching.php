@@ -46,7 +46,7 @@ class Sidetrack_Protected_Admin_Caching {
 		// Caching Section
 		add_settings_section(
 			'sidetrack_protected_compat_caching',
-			__( 'Caching', 'password-protected' ),
+			__( 'Caching', 'sidetrack-protected' ),
 			array( $this, 'section_caching' ),
 			'password-protected-compat'
 		);
@@ -54,7 +54,7 @@ class Sidetrack_Protected_Admin_Caching {
 		// Cookies
 		add_settings_field(
 			'sidetrack_protected_compat_caching_cookie',
-			__( 'Cookies', 'password-protected' ),
+			__( 'Cookies', 'sidetrack-protected' ),
 			array( $this, 'field_cookies' ),
 			'password-protected-compat',
 			'sidetrack_protected_compat_caching'
@@ -65,7 +65,7 @@ class Sidetrack_Protected_Admin_Caching {
 
 			add_settings_field(
 				'sidetrack_protected_compat_caching_wp_engine',
-				__( 'WP Engine Hosting', 'password-protected' ),
+				__( 'WP Engine Hosting', 'sidetrack-protected' ),
 				array( $this, 'field_wp_engine' ),
 				'password-protected-compat',
 				'sidetrack_protected_compat_caching'
@@ -78,7 +78,7 @@ class Sidetrack_Protected_Admin_Caching {
 
 			add_settings_field(
 				'sidetrack_protected_compat_caching_w3_total_cache',
-				__( 'W3 Total Cache', 'password-protected' ),
+				__( 'W3 Total Cache', 'sidetrack-protected' ),
 				array( $this, 'field_w3_total_cache' ),
 				'password-protected-compat',
 				'sidetrack_protected_compat_caching'
@@ -95,8 +95,8 @@ class Sidetrack_Protected_Admin_Caching {
 	 */
 	public function section_caching() {
 
-		echo '<p>' . __( 'Sidetrack Protected does not always work well with sites that use caching.', 'password-protected' ) . '<br />
-			' . __( 'If your site uses a caching plugin or your web hosting uses server-side caching, you may need to configure your setup to disable caching for the Sidetrack Protected cookie:', 'password-protected' ) . '</p>';
+		echo '<p>' . __( 'Sidetrack Protected does not always work well with sites that use caching.', 'sidetrack-protected' ) . '<br />
+			' . __( 'If your site uses a caching plugin or your web hosting uses server-side caching, you may need to configure your setup to disable caching for the Sidetrack Protected cookie:', 'sidetrack-protected' ) . '</p>';
 
 	}
 
@@ -118,8 +118,8 @@ class Sidetrack_Protected_Admin_Caching {
 	 */
 	public function field_wp_engine() {
 
-		echo '<p>' . __( 'We have detected your site may be running on WP Engine hosting.', 'password-protected' ) . '<br />
-			' . __( 'In order for Sidetrack Protected to work with WP Engine\'s caching configuration you must ask them to disable caching for the Sidetrack Protected cookie.', 'password-protected' ) . '</p>';
+		echo '<p>' . __( 'We have detected your site may be running on WP Engine hosting.', 'sidetrack-protected' ) . '<br />
+			' . __( 'In order for Sidetrack Protected to work with WP Engine\'s caching configuration you must ask them to disable caching for the Sidetrack Protected cookie.', 'sidetrack-protected' ) . '</p>';
 
 	}
 
@@ -130,9 +130,9 @@ class Sidetrack_Protected_Admin_Caching {
 	 */
 	public function field_w3_total_cache() {
 
-		echo '<p>' . __( 'It looks like you may be using the W3 Total Cache plugin?', 'password-protected' ) . '<br />
-			' . __( 'In order for Sidetrack Protected to work with W3 Total Cache you must disable caching when the Sidetrack Protected cookie is set.', 'password-protected' ) . ' 
-			' . sprintf( __( 'You can adjust the cookie settings for W3 Total Cache under <a href="%s">Performance > Page Cache > Advanced > Rejected Cookies</a>.', 'password-protected' ), admin_url( '/admin.php?page=w3tc_pgcache#advanced' ) ) . '</p>';
+		echo '<p>' . __( 'It looks like you may be using the W3 Total Cache plugin?', 'sidetrack-protected' ) . '<br />
+			' . __( 'In order for Sidetrack Protected to work with W3 Total Cache you must disable caching when the Sidetrack Protected cookie is set.', 'sidetrack-protected' ) . ' 
+			' . sprintf( __( 'You can adjust the cookie settings for W3 Total Cache under <a href="%s">Performance > Page Cache > Advanced > Rejected Cookies</a>.', 'sidetrack-protected' ), admin_url( '/admin.php?page=w3tc_pgcache#advanced' ) ) . '</p>';
 
 	}
 

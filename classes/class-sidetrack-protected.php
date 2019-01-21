@@ -33,14 +33,14 @@ class Sidetrack_Protected {
 		add_action( 'login_enqueue_scripts', array( $this, 'load_theme_stylesheet' ), 5 );
 		add_shortcode( 'sidetrack_protected_logout_link', array( $this, 'logout_link_shortcode' ) );
 
-		include_once( dirname( dirname( __FILE__ ) ) . '/admin/admin-bar.php' );
+		include_once dirname( dirname( __FILE__ ) ) . '/admin/admin-bar.php';
 
 		if ( is_admin() ) {
 
-			include_once( dirname( dirname( __FILE__ ) ) . '/admin/admin-caching.php' );
+			include_once dirname( dirname( __FILE__ ) ) . '/admin/admin-caching.php';
 
 			$this->admin_caching = new Sidetrack_Protected_Admin_Caching( $this );
-			$this->admin = new Sidetrack_Protected_Admin();
+			$this->admin         = new Sidetrack_Protected_Admin();
 
 		}
 
@@ -50,7 +50,7 @@ class Sidetrack_Protected {
 	 * I18n
 	 */
 	public function load_plugin_textdomain() {
-		load_plugin_textdomain( 'password-protected', false, basename( dirname( dirname( __FILE__ ) ) ) . '/languages' );
+		load_plugin_textdomain( 'sidetrack-protected', false, basename( dirname( dirname( __FILE__ ) ) ) . '/languages' );
 	}
 
 	/**
@@ -114,7 +114,7 @@ class Sidetrack_Protected {
 	 * @todo  Make Translatable
 	 */
 	public function disable_feed() {
-		wp_die( sprintf( __( 'Feeds are not available for this site. Please visit the <a href="%s">website</a>.', 'password-protected' ), get_bloginfo( 'url' ) ) );
+		wp_die( sprintf( __( 'Feeds are not available for this site. Please visit the <a href="%s">website</a>.', 'sidetrack-protected' ), get_bloginfo( 'url' ) ) );
 	}
 
 	/**
@@ -243,7 +243,7 @@ class Sidetrack_Protected {
 
 		if ( $this->is_active() && isset( $_REQUEST['sidetrack_protected_pwd'] ) ) {
 			$sidetrack_protected_pwd = $_REQUEST['sidetrack_protected_pwd'];
-			$pwd = get_option( 'sidetrack_protected_password' );
+			$pwd                     = get_option( 'sidetrack_protected_password' );
 
 			// If correct password...
 			if ( ( hash_equals( $pwd, $this->encrypt_password( $sidetrack_protected_pwd ) ) && $pwd != '' ) || apply_filters( 'sidetrack_protected_process_login', false, $sidetrack_protected_pwd ) ) {
@@ -266,7 +266,7 @@ class Sidetrack_Protected {
 
 				// ... otherwise incorrect password
 				$this->clear_auth_cookie();
-				$this->errors->add( 'incorrect_password', __( 'Incorrect Password', 'password-protected' ) );
+				$this->errors->add( 'incorrect_password', __( 'Incorrect Password', 'sidetrack-protected' ) );
 
 			}
 		}
@@ -395,14 +395,15 @@ class Sidetrack_Protected {
 		}
 
 		$args = wp_parse_args(
-			$args, array(
+			$args,
+			array(
 				'redirect_to' => '',
-				'text'        => __( 'Logout', 'password-protected' ),
+				'text'        => __( 'Logout', 'sidetrack-protected' ),
 			)
 		);
 
 		if ( empty( $args['text'] ) ) {
-			$args['text'] = __( 'Logout', 'password-protected' );
+			$args['text'] = __( 'Logout', 'sidetrack-protected' );
 		}
 
 		return sprintf( '<a href="%s">%s</a>', esc_url( $this->logout_url( $args['redirect_to'] ) ), esc_html( $args['text'] ) );
@@ -421,7 +422,9 @@ class Sidetrack_Protected {
 			array(
 				'redirect_to' => '',
 				'text'        => $content,
-			), $atts, 'logout_link_shortcode'
+			),
+			$atts,
+			'logout_link_shortcode'
 		);
 
 		return $this->logout_link( $atts );
@@ -468,7 +471,7 @@ class Sidetrack_Protected {
 			return false;
 		}
 
-		$key = md5( $this->get_site_id() . $this->get_hashed_password() . '|' . $expiration );
+		$key  = md5( $this->get_site_id() . $this->get_hashed_password() . '|' . $expiration );
 		$hash = hash_hmac( 'md5', $this->get_site_id() . '|' . $expiration, $key );
 
 		if ( $hmac != $hash ) {
@@ -493,8 +496,8 @@ class Sidetrack_Protected {
 	 */
 	public function generate_auth_cookie( $expiration, $scheme = 'auth' ) {
 
-		$key = md5( $this->get_site_id() . $this->get_hashed_password() . '|' . $expiration );
-		$hash = hash_hmac( 'md5', $this->get_site_id() . '|' . $expiration, $key );
+		$key    = md5( $this->get_site_id() . $this->get_hashed_password() . '|' . $expiration );
+		$hash   = hash_hmac( 'md5', $this->get_site_id() . '|' . $expiration, $key );
 		$cookie = $this->get_site_id() . '|' . $expiration . '|' . $hash;
 
 		return $cookie;
@@ -546,11 +549,11 @@ class Sidetrack_Protected {
 
 		if ( $remember ) {
 			$expiration_time = apply_filters( 'sidetrack_protected_auth_cookie_expiration', get_option( 'sidetrack_protected_remember_me_lifetime', 14 ) * DAY_IN_SECONDS, $remember );
-			$expiration = $expire = current_time( 'timestamp' ) + $expiration_time;
+			$expiration      = $expire = current_time( 'timestamp' ) + $expiration_time;
 		} else {
 			$expiration_time = apply_filters( 'sidetrack_protected_auth_cookie_expiration', DAY_IN_SECONDS * 20, $remember );
-			$expiration = current_time( 'timestamp' ) + $expiration_time;
-			$expire = 0;
+			$expiration      = current_time( 'timestamp' ) + $expiration_time;
+			$expire          = 0;
 		}
 
 		if ( '' === $secure ) {
@@ -558,7 +561,7 @@ class Sidetrack_Protected {
 		}
 
 		$secure_sidetrack_protected_cookie = apply_filters( 'sidetrack_protected_secure_sidetrack_protected_cookie', false, $secure );
-		$sidetrack_protected_cookie = $this->generate_auth_cookie( $expiration, 'password_protected' );
+		$sidetrack_protected_cookie        = $this->generate_auth_cookie( $expiration, 'sidetrack_protected' );
 
 		setcookie( $this->cookie_name(), $sidetrack_protected_cookie, $expire, COOKIEPATH, COOKIE_DOMAIN, $secure_sidetrack_protected_cookie, true );
 		if ( COOKIEPATH != SITECOOKIEPATH ) {
@@ -646,7 +649,7 @@ class Sidetrack_Protected {
 
 		if ( $this->errors->get_error_code() ) {
 
-			$errors = '';
+			$errors   = '';
 			$messages = '';
 
 			foreach ( $this->errors->get_error_codes() as $code ) {
@@ -690,11 +693,11 @@ class Sidetrack_Protected {
 		if ( ! empty( $located ) ) {
 
 			$stylesheet_directory = trailingslashit( get_stylesheet_directory() );
-			$template_directory = trailingslashit( get_template_directory() );
+			$template_directory   = trailingslashit( get_template_directory() );
 
 			if ( $stylesheet_directory == substr( $located, 0, strlen( $stylesheet_directory ) ) ) {
 				wp_enqueue_style( 'password-protected-login', get_stylesheet_directory_uri() . '/' . $filename );
-			} else if ( $template_directory == substr( $located, 0, strlen( $template_directory ) ) ) {
+			} elseif ( $template_directory == substr( $located, 0, strlen( $template_directory ) ) ) {
 				wp_enqueue_style( 'password-protected-login', get_template_directory_uri() . '/' . $filename );
 			}
 		}
@@ -743,7 +746,7 @@ class Sidetrack_Protected {
 
 		// If user is not logged in
 		if ( ! $this->is_user_logged_in() && ! is_user_logged_in() && ! (bool) get_option( 'sidetrack_protected_rest' ) ) {
-			return new WP_Error( 'rest_cannot_access', __( 'Only authenticated users can access the REST API.', 'password-protected' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'rest_cannot_access', __( 'Only authenticated users can access the REST API.', 'sidetrack-protected' ), array( 'status' => rest_authorization_required_code() ) );
 		}
 
 		return $access;

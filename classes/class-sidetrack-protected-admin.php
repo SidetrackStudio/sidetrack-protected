@@ -37,7 +37,6 @@ class Sidetrack_Protected_Admin {
 	 */
 	public function settings_page() {
 		?>
-
 		<div class="wrap">
 			<div id="icon-options-general" class="icon32"><br /></div>
 			<h2><?php _e( 'Sidetrack Protected Settings', 'sidetrack-protected' ); ?></h2>
@@ -94,7 +93,7 @@ class Sidetrack_Protected_Admin {
 	public function sidetrack_protected_settings() {
 
 		add_settings_section(
-			'password_protected',
+			'sidetrack_protected',
 			'',
 			array( $this, 'sidetrack_protected_settings_section' ),
 			$this->options_group
@@ -105,7 +104,7 @@ class Sidetrack_Protected_Admin {
 			__( 'Sidetrack Protected Status', 'sidetrack-protected' ),
 			array( $this, 'sidetrack_protected_status_field' ),
 			$this->options_group,
-			'password_protected'
+			'sidetrack_protected'
 		);
 
 		add_settings_field(
@@ -113,7 +112,7 @@ class Sidetrack_Protected_Admin {
 			__( 'Protected Permissions', 'sidetrack-protected' ),
 			array( $this, 'sidetrack_protected_permissions_field' ),
 			$this->options_group,
-			'password_protected'
+			'sidetrack_protected'
 		);
 
 		add_settings_field(
@@ -121,7 +120,7 @@ class Sidetrack_Protected_Admin {
 			__( 'New Password', 'sidetrack-protected' ),
 			array( $this, 'sidetrack_protected_password_field' ),
 			$this->options_group,
-			'password_protected'
+			'sidetrack_protected'
 		);
 
 		add_settings_field(
@@ -129,7 +128,7 @@ class Sidetrack_Protected_Admin {
 			__( 'Allow IP Addresses', 'sidetrack-protected' ),
 			array( $this, 'sidetrack_protected_allowed_ip_addresses_field' ),
 			$this->options_group,
-			'password_protected'
+			'sidetrack_protected'
 		);
 
 		add_settings_field(
@@ -137,7 +136,7 @@ class Sidetrack_Protected_Admin {
 			__( 'Allow Remember me', 'sidetrack-protected' ),
 			array( $this, 'sidetrack_protected_remember_me_field' ),
 			$this->options_group,
-			'password_protected'
+			'sidetrack_protected'
 		);
 
 		add_settings_field(
@@ -145,7 +144,7 @@ class Sidetrack_Protected_Admin {
 			__( 'Remember for this many days', 'sidetrack-protected' ),
 			array( $this, 'sidetrack_protected_remember_me_lifetime_field' ),
 			$this->options_group,
-			'password_protected'
+			'sidetrack_protected'
 		);
 
 		register_setting( $this->options_group, 'sidetrack_protected_status', 'intval' );
@@ -246,8 +245,8 @@ class Sidetrack_Protected_Admin {
 	 */
 	public function sidetrack_protected_permissions_field() {
 
-		echo '<label><input name="sidetrack_protected_administrators" id="sidetrack_protected_administrators" type="checkbox" value="1" ' . checked( 1, get_option( 'sidetrack_protected_administrators' ), false ) . ' /> ' . __( 'Allow Administrators', 'sidetrack-protected' ) . '</label>';
-		echo '<label><input name="sidetrack_protected_users" id="sidetrack_protected_users" type="checkbox" value="1" ' . checked( 1, get_option( 'sidetrack_protected_users' ), false ) . ' style="margin-left: 20px;" /> ' . __( 'Allow Logged In Users', 'sidetrack-protected' ) . '</label>';
+		echo '<label><input name="sidetrack_protected_administrators" id="sidetrack_protected_administrators" type="checkbox" value="1" ' . checked( 1, get_option( 'sidetrack_protected_administrators' ), 1 ) . ' /> ' . __( 'Allow Administrators', 'sidetrack-protected' ) . '</label>';
+		echo '<label><input name="sidetrack_protected_users" id="sidetrack_protected_users" type="checkbox" value="1" ' . checked( get_option( 'sidetrack_protected_users' ), 1 ) . ' style="margin-left: 20px;" /> ' . __( 'Allow Logged In Users', 'sidetrack-protected' ) . '</label>';
 		echo '<label><input name="sidetrack_protected_feeds" id="sidetrack_protected_feeds" type="checkbox" value="1" ' . checked( 1, get_option( 'sidetrack_protected_feeds' ), false ) . ' style="margin-left: 20px;" /> ' . __( 'Allow RSS Feeds', 'sidetrack-protected' ) . '</label>';
 		echo '<label><input name="sidetrack_protected_rest" id="sidetrack_protected_rest" type="checkbox" value="1" ' . checked( 1, get_option( 'sidetrack_protected_rest' ), false ) . ' style="margin-left: 20px;" /> ' . __( 'Allow REST API Access', 'sidetrack-protected' ) . '</label>';
 
@@ -371,7 +370,7 @@ class Sidetrack_Protected_Admin {
 		// Settings
 		if ( $this->is_current_screen( $this->plugin_screen_ids() ) ) {
 			$status = get_option( 'sidetrack_protected_status' );
-			$pwd = get_option( 'sidetrack_protected_password' );
+			$pwd    = get_option( 'sidetrack_protected_password' );
 
 			if ( (bool) $status && empty( $pwd ) ) {
 				echo $this->admin_error_display( __( 'You have enabled password protection but not yet set a password. Please set one below.', 'sidetrack-protected' ) );

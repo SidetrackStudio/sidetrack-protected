@@ -38,7 +38,7 @@ if ( SITECOOKIEPATH != COOKIEPATH ) {
 
 // If cookies are disabled we can't log in even with a valid password.
 if ( isset( $_POST['testcookie'] ) && empty( $_COOKIE[ TEST_COOKIE ] ) ) {
-	$sidetrack_protected->errors->add( 'test_cookie', __( "<strong>ERROR</strong>: Cookies are blocked or not supported by your browser. You must <a href='http://www.google.com/cookies.html'>enable cookies</a> to use WordPress.", 'password-protected' ) );
+	$sidetrack_protected->errors->add( 'test_cookie', __( "<strong>ERROR</strong>: Cookies are blocked or not supported by your browser. You must <a href='http://www.google.com/cookies.html'>enable cookies</a> to use WordPress.", 'sidetrack-protected' ) );
 }
 
 // Shake it!
@@ -103,18 +103,18 @@ do_action( 'sidetrack_protected_login_head' );
 
 	<form name="loginform" id="loginform" action="<?php echo esc_url( $sidetrack_protected->login_url() ); ?>" method="post">
 		<p>
-			<label for="sidetrack_protected_pass"><?php _e( 'Password', 'password-protected' ); ?><br />
+			<label for="sidetrack_protected_pass"><?php _e( 'Password', 'sidetrack-protected' ); ?><br />
 			<input type="password" name="sidetrack_protected_pwd" id="sidetrack_protected_pass" class="input" value="" size="20" tabindex="20" /></label>
 		</p>
 
 		<?php if ( $sidetrack_protected->allow_remember_me() ) : ?>
 			<p class="forgetmenot">
-				<label for="sidetrack_protected_rememberme"><input name="sidetrack_protected_rememberme" type="checkbox" id="sidetrack_protected_rememberme" value="1" tabindex="90" /> <?php esc_attr_e( 'Remember Me', 'password-protected' ); ?></label>
+				<label for="sidetrack_protected_rememberme"><input name="sidetrack_protected_rememberme" type="checkbox" id="sidetrack_protected_rememberme" value="1" tabindex="90" /> <?php esc_attr_e( 'Remember Me', 'sidetrack-protected' ); ?></label>
 			</p>
 		<?php endif; ?>
 
 		<p class="submit">
-			<input type="submit" name="wp-submit" id="wp-submit" class="button button-primary button-large" value="<?php esc_attr_e( 'Log In', 'password-protected' ); ?>" tabindex="100" />
+			<input type="submit" name="wp-submit" id="wp-submit" class="button button-primary button-large" value="<?php esc_attr_e( 'Log In', 'sidetrack-protected' ); ?>" tabindex="100" />
 			<input type="hidden" name="testcookie" value="1" />
 			<input type="hidden" name="password-protected" value="login" />
 			<input type="hidden" name="redirect_to" value="<?php echo esc_attr( $_REQUEST['redirect_to'] ); ?>" />

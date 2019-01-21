@@ -12,7 +12,7 @@ class Sidetrack_IP_AJAX {
 	}
 
 	public static function add_new_ip() {
-		$to_add = $_POST;
+		$to_add          = $_POST;
 		$unrestricted_ip = get_option( 'unrestricted_ip' );
 		if ( ! filter_var( $to_add['current_ip'], FILTER_VALIDATE_IP ) ) {
 			$to_add['message'] = 'Not a Valid IP';
@@ -44,15 +44,15 @@ class Sidetrack_IP_AJAX {
 
 	public static function ip_access_admin_menu() {
 		global $add_new_ip_settings;
-		$add_new_ip_settings = add_dashboard_page( __( 'Add IPs', 'add-new-ip' ), __( 'Add IPs', 'add-new-ip' ), 'manage_options', 'add-ip-ajax.php', array( __CLASS__, 'ip_access_admin_page' ) );
+		$add_new_ip_settings = add_dashboard_page( __( 'Add IPs', 'sidetrack-protected' ), __( 'Add IPs', 'sidetrack-protected' ), 'manage_options', 'add-ip-ajax.php', array( __CLASS__, 'ip_access_admin_page' ) );
 	}
 
 	public static function ip_access_admin_page() {
-		$show_ip = self::get_and_validate_ip_address();
+		$show_ip  = self::get_and_validate_ip_address();
 		$accepted = get_transient( 'accepted' );
 		?>
 		<div class="wrap">
-			<h2><?php esc_attr_e( 'Add IPs to Provide Open Access', 'add-new-ip' ); ?></h2>
+			<h2><?php esc_attr_e( 'Add IPs to Provide Open Access', 'sidetrack-protected' ); ?></h2>
 		</div>
 		<h3>Add the organization IP in the window below to add it to the list.</h3>
 		<p class="description">Refresh the page to see the new IP added.</p>	<p class="description">Don't forget to test!</p>
@@ -70,7 +70,7 @@ class Sidetrack_IP_AJAX {
 		<form id="add-new-ip-form" method="POST" style="padding: 2rem;">
 		<div>
 			<input type="text" name="get-current-ip" id="get-current-ip" value="<?php echo $show_ip; ?>"/>
-			<input type="submit" name="add-new-ip-submit" id="add-new-ip-submit" class="button-primary" value="<?php esc_attr_e( 'Add this IP', 'add-new-ip' ); ?>"/>
+			<input type="submit" name="add-new-ip-submit" id="add-new-ip-submit" class="button-primary" value="<?php esc_attr_e( 'Add this IP', 'sidetrack-protected' ); ?>"/>
 			<img src="<?php echo esc_url( admin_url( '/images/wpspin_light.gif' ) ); ?>" class="waiting" id="add-new-ip-loading" style="display:none;"/>
 		</div>
 		</form>
@@ -82,7 +82,7 @@ class Sidetrack_IP_AJAX {
 			<button id="delete-transient-submit" style="display: none;" class="button-primary">Delete Transient</button>
 		</form>
 	</div>
-	<?php
+		<?php
 	}
 
 	public static function add_new_ip_scripts( $hook ) {
@@ -92,8 +92,10 @@ class Sidetrack_IP_AJAX {
 		}
 		wp_enqueue_script( 'add-new-ip', plugin_dir_url( dirname( __FILE__ ) ) . 'js/add-new-ip.js', array( 'jquery' ) );
 		wp_localize_script(
-			'add-new-ip', 'add_new_ip_object', array(
-				'add_new_ip_nonce' => wp_create_nonce( 'add-new-ip-nonce' ),
+			'add-new-ip',
+			'add_new_ip_object',
+			array(
+				'add_new_ip_nonce'   => wp_create_nonce( 'add-new-ip-nonce' ),
 				'add_new_ip_ajaxurl' => admin_url( 'admin-ajax.php' ),
 			)
 		);
